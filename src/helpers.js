@@ -677,7 +677,7 @@ hbs.registerHelper('eliminarrr',(identificador,documento)=>{
 listarMat()
 let mensaje;
 let idmatriculaa=identificador+''+documento;
-	mensaje=idmatricula
+	mensaje=idmatriculaa
 let nuevo=listaMatriculas.filter(mat=>mat.idmatricula!=idmatriculaa);
 	if(nuevo.length==listaMatriculas.length){
 		console.log('No se encontro la matricula');
