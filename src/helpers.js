@@ -685,7 +685,7 @@ let nuevo=listaMatriculas.filter(mat=>mat.idmatricula!=idmatricula)
 		
 		listaMatriculas=nuevo
 		guardarMat()
-		mensaje=mensaje+'pase por eliminarrr'
+		mensaje=mensaje+'pase por eliminarrr'+listaMatriculas
 	}
 		return mensaje;
 })
