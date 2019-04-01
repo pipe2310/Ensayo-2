@@ -684,7 +684,7 @@ let nuevo=listaMatriculas.filter(mat=>mat.idmatricula!=idmatriculaa);
 	}else{
 		
 		listaMatriculas=nuevo
-		guardarMat()
+		guardarMat();
 		mensaje=mensaje+'pase por eliminarrr'+listaMatriculas
 	}
 		return mensaje;
