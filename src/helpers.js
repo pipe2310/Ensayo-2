@@ -677,13 +677,15 @@ hbs.registerHelper('eliminarrr',(identificador,documento)=>{
 listarMatt()
 let mensaje;
 let idmatricula=identificador+''+documento;
+	mensaje=idmatricula
 let nuevo=listaMatriculas.filter(mat=>mat.idmatricula!=idmatricula)
 	if(nuevo.length==listaMatriculas.length){
 		console.log('No se encontro la matricula');
 	}else{
+		
 		listaMatriculas=nuevo
 		guardarMat()
-		mensaje='pase por eliminarrr'
+		mensaje=mensaje+'pase por eliminarrr'
 	}
 		return mensaje;
 })
