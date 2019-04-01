@@ -83,6 +83,8 @@ const guardarMatt = ()=> {
 		fs.writeFile('listado3.json',datos,(err)=>{
 			if(err) throw(err);
 			console.log('Archivo creado con exito')
+			mensaje="arhivo creado con exito";
+			return mensaje;
 		})
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -708,8 +710,8 @@ let idmatriculaa=identificador+''+documento;
 		}
 
 	})
-	guardarMatt();
-
+	mensaje=guardarMatt();
+return mensaje;
 })
 
 
