@@ -3,6 +3,7 @@ const fs = require ('fs');
 listaCursos = [];
 listaAspirantes= [];
 listaMatriculas= [];
+listaMatriculass= [];
 
 ///////////////////////////////////////////LISTAR LOS CURSOS//////////////////////////////////////////////////////////////
 const listar = ()=>{
