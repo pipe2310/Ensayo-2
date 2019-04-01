@@ -3,38 +3,12 @@ const fs = require ('fs');
 listaCursos = [];
 listaAspirantes= [];
 listaMatriculas= [];
-let cursos =[ {
-Id: 101,
-Nombre: 'Fundamentos de programacion en java',
-Duracion: 60,
-Valor: 200000
-
-},
-{
-
-Id: 202,
-Nombre: 'Fundamentos de programacion en C#',
-Duracion: 50,
-Valor: 250000
-},
-
-{
-
-Id: 303,
-Nombre: 'Fundamentos de programacion en C++',
-Duracion: 40,
-Valor: 275000
-
-}];
-/*const crear = (curso)=>{
-
-}*/
 
 ///////////////////////////////////////////LISTAR LOS CURSOS//////////////////////////////////////////////////////////////
 const listar = ()=>{
 	try{
-	listaCursos= require('../listado.json');//dos formas de llamar
-	//listaEstudiantes= JSON.parse(fs.readFileSync(listado.json));// de manera asincronica es mejor utilizar este
+	//listaCursos= require('../listado.json');//dos formas de llamar
+	listaCursos= JSON.parse(fs.readFileSync('listado.json'));// de manera asincronica es mejor utilizar este
 	}catch(error){
 		listaCursos=[];
 	}
@@ -44,8 +18,8 @@ const listar = ()=>{
 ///////////////////////////////////////////LISTAR LOS ASPIRANTES//////////////////////////////////////////////////////////////
 const listarAsp=()=>{
 	try{
-	listaAspirantes= require('../listado2.json');//dos formas de llamar
-	//listaEstudiantes= JSON.parse(fs.readFileSync(listado.json));// de manera asincronica es mejor utilizar este
+	//listaAspirantes= require('../listado2.json');//dos formas de llamar
+	listaAspirantes= JSON.parse(fs.readFileSync('listado2.json'));// de manera asincronica es mejor utilizar este
 	}catch(error){
 		listaAspirantes=[];
 	}
@@ -55,8 +29,18 @@ const listarAsp=()=>{
 ///////////////////////////////////////////LISTAR LAS MATRICULAS//////////////////////////////////////////////////////////////
 const listarMat=()=>{
 	try{
+	//listaMatriculas= require('../listado3.json');//dos formas de llamar
+	listaMatriculas= JSON.parse(fs.readFileSync('listado3.json'));// de manera asincronica es mejor utilizar este
+	}catch(error){
+		listaMatriculas=[];
+	}
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////LISTAR LAS MATRICULAS//////////////////////////////////////////////////////////////
+const listarMatt=()=>{
+	try{
 	listaMatriculas= require('../listado3.json');//dos formas de llamar
-	//listaEstudiantes= JSON.parse(fs.readFileSync(listado.json));// de manera asincronica es mejor utilizar este
+	//listaMatriculas= JSON.parse(fs.readFileSync('listado3.json'));// de manera asincronica es mejor utilizar este
 	}catch(error){
 		listaMatriculas=[];
 	}
@@ -94,29 +78,10 @@ const guardarMat = ()=> {
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-const mostrar =()=>{
-	listar()
-	console.log('Notas de los estudiantes')
-
-	listaEstudiantes.forEach(estudiante=>{
-		console.log(estudiante.nombre);
-		console.log('notas')
-		console.log(' matematicas '+ estudiante.matematicas)
-		console.log(' ingles '+ estudiante.ingles)
-		console.log(' programacion '+ estudiante.programacion + '\n')
-	})
-
-}
-
 ///////////////////////////////////////////CREAR LOS CURSOS//////////////////////////////////////////////////////////////
 hbs.registerHelper('crear',(id,nombre,descripcion,valor,modalidad,intensidad, estado)=>{
 	listar();
 	let mesaje;
-	/*if(modalidad==',Virtual')
-		modalidad='Virtual';
-	else
-		modalidad='Presencial'*/
-
 	let cur ={
 		id: id,
 		nombre: nombre,
@@ -174,6 +139,7 @@ hbs.registerHelper('crearmat',(identificador,documento)=>{
 	let mensaje;
 	let sw=true;
 	let mat ={
+		idmatricula: identificador+''+documento,
 		identificador: identificador,
 		documento: documento
 	};
@@ -186,7 +152,6 @@ hbs.registerHelper('crearmat',(identificador,documento)=>{
 		}
 	})
 	if(sw==true){
-	//console.log(duplicadoo)
 	listaMatriculas.push(mat);
 	console.log(listaMatriculas);
 	guardarMat();
@@ -482,7 +447,7 @@ hbs.registerHelper('mostrarmatcursos2',()=>{
 let string ;
 var out = '<div class="accordion" id="accordionExample"> <div class="row">';
 listarAsp()
-listarMat()
+listarMatt()
 listar()
 i=1;
 let sw;
@@ -549,7 +514,7 @@ hbs.registerHelper('mostrarmatcursos3',(identificador,documento)=>{
 let string ;
 var out = '<div class="accordion" id="accordionExample"> <div class="row">';
 listarAsp()
-listarMat()
+listarMatt()
 listar()
 i=1;
 let sw;
@@ -670,22 +635,8 @@ out="Identificador del curso no encontrado";
   );
 })
 
-
-const actualizar=(id,nombre,descripcion,valor,modalidad,intensidad,estado)=>{
-	listar()
-	let encontrado = listaCursos.find(buscar => buscar.id== id)
-	if(!encontrado){
-console.log('Estudiante no existe')
-	}
-	else{
-		encontrado[estado]= estado;
-		guardar()
-	}
-
-}
-
 hbs.registerHelper('eliminarr',(identificador,documento)=>{
-listarMat()
+listarMatt()
 let sw=false;
 let sww=false;
 let mensaje;
@@ -713,7 +664,7 @@ let listaMatriculass= [];
 		listaMatriculas=listaMatriculass
 		console.log('despues de')
 		console.log(listaMatriculas)
-		guardarMat();
+		guardarMat()
 		if(sw==true){
 			mensaje='Eliminado correctamente'
 		}else{
@@ -722,27 +673,20 @@ let listaMatriculass= [];
 		return mensaje;
 })
 
-hbs.registerHelper('eliminar',(identificador,documento)=>{
-listarMat()
-var filter={
-	identificador: identificador,
-	documento: documento
-};
-
-nuevo= listaMatriculas.filter(function(item) {
-  for (var key in filter) {
-    if (item[key] === undefined || item[key] != filter[key])
-      return false;
-  }
-  return true;
-});
+hbs.registerHelper('eliminarrr',(identificador,documento)=>{
+listarMatt()
+let mensaje;
+let idmatricula=identificador+''+documento;
+let nuevo=listaMatriculas.filter(mat=>mat.idmatricula!=idmatricula)
+	if(nuevo.length==listaMatriculas.length){
+		console.log('No se encontro la matricula');
+	}else{
 		listaMatriculas=nuevo
 		guardarMat()
+		mensaje='pase por eliminarrr'
+	}
+		return mensaje;
 })
-
-
-
-
 
 
 const eliminar=(non)=>{
@@ -757,38 +701,4 @@ const eliminar=(non)=>{
 
 	}
 
-}
-
-
-
-hbs.registerHelper('verificar',(id,cedula,nombre)=>{
-let mensaje;
-		cursos.forEach(mat=>{
-			console.log(mat.Id);
-		if(mat.Id==id){
-			mensaje= 'El estudiante' +nombre+' identificado con cedula de ciudadania'+cedula+'se matriculo satisfactoriamente en el curso '+id+' nombrado'+mat.Nombre+'con una duracion de '+mat.Durancion+' horas y un valor de '+mat.Valor;
-			
-		}
-		else{
-			mensaje='Identificador de curso no encontrado';
-		}
-	})
-return mensaje;
-})
-
-function dynamicSort(property) {
-    var sortOrder = 1;
-
-    if(property[0] === "-") {
-        sortOrder = -1;
-        property = property.substr(1);
-    }
-
-    return function (a,b) {
-        if(sortOrder == -1){
-            return b[property].localeCompare(a[property]);
-        }else{
-            return a[property].localeCompare(b[property]);
-        }        
-    }
 }

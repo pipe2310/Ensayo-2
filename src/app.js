@@ -1,9 +1,19 @@
+var PORT = process.env.PORT || 3000;
 const express = require('express');
 const app = express();
 const path = require('path');
 const hbs = require('hbs');
 const bodyParser = require('body-parser')
 require('./helpers');
+
+var http = require('http');
+var server = http.Server(app);
+
+app.use(express.static('client'));
+
+server.listen(PORT, function(){
+console.log('App server renning');
+});
 
 const directoriopublico = path.join(__dirname, '../public')
 const directoiopartial= path.join(__dirname, '../partials')
