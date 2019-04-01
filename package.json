@@ -1,0 +1,30 @@
+{
+  "name": "segunda_entrega_1.0.1",
+  "version": "1.0.1",
+  "description": "Segundo Trabajo",
+  "main": "src/app",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Felipe",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "bootstrap": "^4.3.1",
+    "express": "^4.16.4",
+    "git": "^0.1.5",
+    "hbs": "^4.0.3",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.7",
+    "yargs": "^13.2.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pipe2310/segunda.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pipe2310/segunda/issues"
+  },
+  "homepage": "https://github.com/pipe2310/segunda#readme",
+  "devDependencies": {}
+}
