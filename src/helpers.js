@@ -702,7 +702,7 @@ let nuevo=listaMatriculas.filter(mat=>mat.idmatricula!=idmatriculaa);
 })
 hbs.registerHelper('eliminarrrr',(identificador,documento)=>{
 listarMatt()
-let mensaje;
+let mensaje="no guardo";
 let idmatriculaa=identificador+''+documento;
 	listaMatriculas.forEach(mat=>{
 		if(mat.idmatricula!=idmatriculaa){
