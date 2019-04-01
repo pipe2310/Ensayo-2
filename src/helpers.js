@@ -674,11 +674,11 @@ let listaMatriculass= [];
 })
 
 hbs.registerHelper('eliminarrr',(identificador,documento)=>{
-listarMatt()
+listarMat()
 let mensaje;
-let idmatricula=identificador+''+documento;
+let idmatriculaa=identificador+''+documento;
 	mensaje=idmatricula
-let nuevo=listaMatriculas.filter(mat=>mat.idmatricula!=idmatricula)
+let nuevo=listaMatriculas.filter(mat=>mat.idmatricula!=idmatriculaa);
 	if(nuevo.length==listaMatriculas.length){
 		console.log('No se encontro la matricula');
 	}else{
