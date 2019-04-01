@@ -76,6 +76,14 @@ const guardarMat = ()=> {
 			console.log('Archivo creado con exito')
 		})
 }
+
+const guardarMatt = ()=> {
+		let datos = JSON.stringify(listaMatriculass);
+		fs.writeFile('listado3.json',datos,(err)=>{
+			if(err) throw(err);
+			console.log('Archivo creado con exito')
+		})
+}
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////CREAR LOS CURSOS//////////////////////////////////////////////////////////////
@@ -688,6 +696,19 @@ let nuevo=listaMatriculas.filter(mat=>mat.idmatricula!=idmatriculaa);
 		mensaje=listaMatriculas
 	}
 		return mensaje;
+})
+hbs.registerHelper('eliminarrrr',(identificador,documento)=>{
+listarMatt()
+let mensaje;
+let idmatriculaa=identificador+''+documento;
+	listaMatriculas.forEach(mat=>{
+		if(mat.idmatricula!=idmatriculaa){
+			listaMatriculass.push(mat);
+		}
+
+	})
+	guardarMatt();
+
 })
 
 
