@@ -7,8 +7,8 @@ listaMatriculas= [];
 ///////////////////////////////////////////LISTAR LOS CURSOS//////////////////////////////////////////////////////////////
 const listar = ()=>{
 	try{
-	//listaCursos= require('../listado.json');//dos formas de llamar
-	listaCursos= JSON.parse(fs.readFileSync('listado.json'));// de manera asincronica es mejor utilizar este
+	listaCursos= require('../listado.json');//dos formas de llamar
+	//listaCursos= JSON.parse(fs.readFileSync('listado.json'));// de manera asincronica es mejor utilizar este
 	}catch(error){
 		listaCursos=[];
 	}
@@ -18,8 +18,8 @@ const listar = ()=>{
 ///////////////////////////////////////////LISTAR LOS ASPIRANTES//////////////////////////////////////////////////////////////
 const listarAsp=()=>{
 	try{
-	//listaAspirantes= require('../listado2.json');//dos formas de llamar
-	listaAspirantes= JSON.parse(fs.readFileSync('listado2.json'));// de manera asincronica es mejor utilizar este
+	listaAspirantes= require('../listado2.json');//dos formas de llamar
+	//listaAspirantes= JSON.parse(fs.readFileSync('listado2.json'));// de manera asincronica es mejor utilizar este
 	}catch(error){
 		listaAspirantes=[];
 	}
@@ -29,8 +29,8 @@ const listarAsp=()=>{
 ///////////////////////////////////////////LISTAR LAS MATRICULAS//////////////////////////////////////////////////////////////
 const listarMat=()=>{
 	try{
-	//listaMatriculas= require('../listado3.json');//dos formas de llamar
-	listaMatriculas= JSON.parse(fs.readFileSync('listado3.json'));// de manera asincronica es mejor utilizar este
+	listaMatriculas= require('../listado3.json');//dos formas de llamar
+	//listaMatriculas= JSON.parse(fs.readFileSync('listado3.json'));// de manera asincronica es mejor utilizar este
 	}catch(error){
 		listaMatriculas=[];
 	}
@@ -514,7 +514,7 @@ hbs.registerHelper('mostrarmatcursos3',(identificador,documento)=>{
 let string ;
 var out = '<div class="accordion" id="accordionExample"> <div class="row">';
 listarAsp()
-listarMatt()
+listarMat()
 listar()
 i=1;
 let sw;
